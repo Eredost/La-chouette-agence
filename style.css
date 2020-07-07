@@ -7,24 +7,9 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-a,
-button {
-    transition: all .3s ease-in-out;
-    outline: none!important;
-}
-
-a:hover {
-    text-decoration: none;
-    cursor: pointer;
-}
-
-#page-loading-blocs-notifaction {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-    z-index: 100000;
-    background: #FFFFFF url("img/pageload-spinner.gif") no-repeat center center;
+a:focus,
+button:focus {
+    outline: 1px dotted black;
 }
 
 .bloc {
@@ -236,7 +221,6 @@ a:hover {
 
 .d-bloc .panel .a-btn:hover,
 .l-bloc .a-btn:hover,
-.l-bloc .navbar a:hover,
 .l-bloc .navbar-brand:hover,
 .l-bloc a:hover .icon-sm,
 .l-bloc a:hover .icon-md,
@@ -323,18 +307,40 @@ a:hover {
 }
 
 .nav > li {
+    position: relative;
     float: left;
     margin-top: 4px;
     font-size: 16px;
+}
+
+.nav > li + li {
+    margin-left: 10px;
+}
+
+.nav > li a:hover {
+    background: none;
+}
+
+.nav > li a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 3px;
+    background-color: #f3976c;
+    transition: .3s ease-in-out;
+    transform-origin: top left;
+    transform: scaleX(0);
 }
 
 .navbar-nav .open .dropdown-menu > li > a {
     text-align: inherit;
 }
 
-.nav > li a:hover,
-.nav > li a:focus {
-    background: transparent;
+.nav > li a:hover::after,
+.nav > li a.active::after {
+    transform: scaleX(1);
 }
 
 .navbar-toggle {
@@ -369,10 +375,6 @@ a:hover {
         right: 20px;
         transform: translate(0, -50%);
         -webkit-transform: translateY(-50%);
-    }
-    .nav > li .dropdown-menu a,
-    .nav > li .dropdown-menu a:hover {
-        color: #484848;
     }
     .nav-invert .site-navigation {
         left: 0;
@@ -458,10 +460,6 @@ nav .caret {
 .btn-d:focus {
     color: #FFF;
     background: rgba(0, 0, 0, .3);
-}
-
-button {
-    outline: none!important;
 }
 
 .btn-rd {
@@ -649,7 +647,7 @@ p,
 label,
 .btn,
 a {
-    font-family: "helvetica";
+    font-family: "helvetica", sans-serif;
     font-weight: 400;
     color: #575757!important;
 }
@@ -687,7 +685,7 @@ p {
 
 .h1 {
     font-size: 20px;
-    font-family: "Open Sans";
+    font-family: "Open Sans", sans-serif;
 }
 
 .cta-hero {
