@@ -8,8 +8,11 @@ body {
 }
 
 a:focus,
-button:focus {
-    outline: 1px dotted black;
+button:focus,
+h1:focus,
+h2:focus,
+h3:focus {
+    outline: 2px dotted black;
 }
 
 .bloc {
@@ -310,6 +313,7 @@ button:focus {
     position: relative;
     float: left;
     margin-top: 4px;
+    margin-right: 10px;
     font-size: 16px;
 }
 
@@ -683,11 +687,6 @@ p {
     margin: auto auto auto auto;
 }
 
-.h1 {
-    font-size: 20px;
-    font-family: "Open Sans", sans-serif;
-}
-
 .cta-hero {
     margin-top: 22px;
     color: #FFFFFF!important;
@@ -778,16 +777,36 @@ h4 {
 
 .tc-white {
     color: #F3976C!important;
+    text-shadow: 1px 1px black;
 }
 
 .btn-atomic-tangerine {
+    position: relative;
+    overflow: hidden;
     background: #F3976C;
-    color: #FFFFFF!important;
+    color: #000!important;
+    transition: .3s;
+    border: none;
 }
 
-.btn-atomic-tangerine:hover {
-    background: #c27956!important;
-    color: #FFFFFF!important;
+.btn-atomic-tangerine::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255,255,255,0.1);
+    opacity: 0;
+}
+
+.btn-atomic-tangerine:hover,
+.btn-atomic-tangerine:focus {
+    transform: scale(1.1);
+}
+
+.btn-atomic-tangerine:hover::after {
+    opacity: 1;
 }
 
 .ltc-white {
@@ -822,11 +841,62 @@ h4 {
 }
 
 .bg-banniere {
-    background-image: url("img/la-chouette-agence-banniere.jpeg");
+    background-image: url("img/la-chouette-agence-banniere.jpg");
 }
 
 .bg-presentation {
-    background-image: url("img/image-de-presentation.jpeg");
+    background-image: url("img/image-de-presentation.jpg");
+}
+
+.black {
+    color: black;
+}
+
+.red {
+    color: #CC0000;
+}
+
+.testimonial {
+    font-size: 1.3em;
+    color: rgba(0,0,0,0.7);
+}
+
+.testimonial-author {
+    font-size: 0.9em;
+}
+
+footer * {
+    color: #000!important;
+}
+
+footer ul {
+    padding-left: 0;
+}
+
+footer ul li {
+    list-style: none;
+    font-size: 0.9em;
+}
+
+footer .social-icon span {
+    font-size: 1.2em;
+    transition: .3s;
+}
+
+footer .social-icon:hover span {
+    transform: scale(1.2);
+}
+
+footer .partners {
+    font-size: 1.35em;
+}
+
+footer .partners a {
+    text-decoration: underline;
+}
+
+footer .partners a:hover {
+
 }
 
 @media (max-width: 1024px) {
@@ -1043,27 +1113,4 @@ h4 {
     .bloc-mob-center-text {
         text-align: center;
     }
-}
-
-/* Added Styles */
-
-.testimonial {
-    font-size: 1.3em;
-    color: rgba(0,0,0,0.7);
-}
-
-.testimonial-author {
-    font-size: 0.9em;
-}
-
-footer * {
-    color: #000!important;
-}
-
-footer ul {
-    padding-left: 0;
-}
-
-footer .partners {
-    font-size: 1.2em;
 }
